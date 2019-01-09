@@ -1,6 +1,7 @@
-import { createQuery } from "./createQuery";
+import { createSelectQuery } from "../builder/selectBuilder"
+import { createSelectQueryBuilder } from "../builder/selectBuilder"
 
-export declare function createQuery(
+export declare function createSelectQuery(
   tableName: string,
-  tableRename: string,
-): string {}
+  tableRename?: string,
+): createSelectQueryBuilder {}

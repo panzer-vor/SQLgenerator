@@ -1,7 +1,6 @@
 import { select } from "./select";
+import { createSelectQueryBuilder } from "../builder/selectBuilder"
 
-interface IFields {
-  [filedsKey: string] : string
-}
-
-export declare function select(fields: IFields): string {}
+export declare function select(fields: {
+  [filedsKey: string] : string  
+}): createSelectQueryBuilder {}

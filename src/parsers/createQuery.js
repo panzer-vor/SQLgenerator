@@ -1,6 +1,8 @@
-export function createQuery(
+export function createSelectQuery(
   tableName,
   tableRename,
 ) {
-  return `${tableName} AS ${tableRename}`
+  this._str += `FROM ${tableName} `
+  if (tableRename) this._str += `AS ${tableRename} `
+  return this
 }

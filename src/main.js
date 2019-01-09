@@ -1,13 +1,9 @@
-import { createQuery } from './parsers/createQuery'
-import { select } from './parsers/select'
-class SQLGenerator {
+import createSelectQuery from './builder/selectBuilder'
+
+export class SQLGenerator {
   constructor() {
-    this._str = 'SELECT '
-    this.createQuery = createQuery
-    this.select = select
-  }
-  getQuery() {
-    return `SELECT ${select() || '*'}`
+    this._str = ''
+    this.createSelectQuery = createSelectQuery
   }
 }
-new SQLGenerator().createQuery()
+export default new SQLGenerator()
