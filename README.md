@@ -11,7 +11,7 @@ sqlG
   .getQuery()
 ```
 
-output: ```SELECT * FROM table_name```
+output: ```'SELECT * FROM table_name'```
 
 ## API
 
@@ -46,13 +46,15 @@ inWhere(
 - orWhere
 ```typescript
 orWhere(
-  where?: string | string[]
+  where?: string | string[],
+  prefix?: 'AND' | 'OR' 
 )
 ```
 - andWhere
 ```typescript
 andWhere(
-  where?: string | string[]
+  where?: string | string[],
+  prefix?: 'AND' | 'OR' 
 )
 ```
 - orderBy

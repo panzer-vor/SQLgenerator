@@ -16,10 +16,12 @@ export declare function inWhere(
 ): SQLGenerator {}
 
 export declare function orWhere(
-  where?: string | string[]
+  where: string | string[],
+  prefix?: 'AND' | 'OR' 
 ): SQLGenerator {}
 
 export declare function andWhere(
-  where?: string | string[]
+  where: string | string[],
+  prefix?: 'AND' | 'OR'
 ): createSelectQueryBuilder {}
 
