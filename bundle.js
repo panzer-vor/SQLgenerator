@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function select(
   fields
 ) {
-  const fieldsStr = Object.keys(fields).map(v => `${v} AS ${fields[v]}`).join(',') + ' ';
+  const fieldsStr = Object.keys(fields).map(v => `${v} AS ${fields[v]}`).join(',');
   this._str = this._str.replace('*', fieldsStr);
   return this
 }
@@ -48,7 +48,39 @@ function orWhere(
 ) {
   if (!where) this._str += 'OR ';  
   if (typeof where === 'string') this._str += `OR ${where} `;
-  if (Array.isArray(where)) this._str += `(${where.join(' OR ')})`;
+  if (Array.isArray(where)) this._str += `(${where.join(' OR ')})` + ' ';
+  return this
+}
+
+function leftJoin(
+  [joinTableName, joinTableRename], condition, ...conditions
+) {
+  this._str += `LEFT JOIN ${joinTableName} `;
+  if (joinTableRename) {
+    this._str += `AS ${joinTableRename} `;
+  }
+  this._str += `ON ${condition} `;
+  return this
+}
+
+function groupBy(
+  field
+) {
+  this._str += `GROUP BY ${field} `;
+  return this
+}
+
+function orderBy(
+  field
+) {
+  this._str += `ORDER BY ${field} `;
+  return this
+}
+
+function limit(
+  start, size
+) {
+  this._str += `LIMIT ${start}, ${size} `;
   return this
 }
 
@@ -60,10 +92,17 @@ class createSelectQueryBuilder {
     this.inWhere = inWhere;
     this.andWhere = andWhere;
     this.orWhere = orWhere;
+    this.groupBy = groupBy;
+    this.leftJoin = leftJoin;
+    this.orderBy = orderBy;
+    this.limit = limit;
     this.createSelectQuery = createSelectQuery.bind(this);
   }
   getQuery() {
     return this._str
+  }
+  getInnerCount() {
+    return `SELECT count(*) as total FROM (${this._str}) AS t`
   }
 }
 
@@ -74,11 +113,10 @@ class SQLGenerator {
     this._str = '';
     this.createSelectQuery = createSelectQuery$1;
   }
-  getCountQuery() {
-    return 
-  }
 }
 var main = new SQLGenerator();
+const sqlG = new SQLGenerator();
 
 exports.SQLGenerator = SQLGenerator;
 exports.default = main;
+exports.sqlG = sqlG;

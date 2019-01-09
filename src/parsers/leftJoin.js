@@ -5,6 +5,6 @@ export function leftJoin(
   if (joinTableRename) {
     this._str += `AS ${joinTableRename} `
   }
-  this._str += `ON ${condition}`
+  this._str += `ON ${condition} `
   return this
 }

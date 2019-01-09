@@ -1,5 +1,6 @@
 import { createSelectQueryBuilder } from "./selectBuilder";
 import { SQLGenerator } from '../main'
+import { leftJoin } from '../parsers/leftJoin'
 import { createSelectQuery } from '../parsers/createQuery'
 import {
   where,
@@ -16,6 +17,7 @@ export declare class createSelectQueryBuilder{
   inWhere: inWhere
   andWhere: andWhere
   orWhere: orWhere
+  leftJoin: leftJoin
   createSelectQuery: createSelectQuery
   getQuery(): string
 }

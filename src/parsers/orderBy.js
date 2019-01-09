@@ -1,4 +1,4 @@
-export function groupBy(
+export function orderBy(
   field
 ) {
   this._str += `ORDER BY ${field} `

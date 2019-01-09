@@ -7,3 +7,4 @@ export class SQLGenerator {
   }
 }
 export default new SQLGenerator()
+export const sqlG = new SQLGenerator()
