@@ -20,6 +20,30 @@ output: ```'SELECT * FROM table_name'```
 createSelectQuery(
   tableName: string,
   tableRename?: string,
+)
+```
+- createUpdateQuery
+```typescript
+createUpdateQuery(
+  tableName: string,
+)
+```
+- createDeleteQuery
+```typescript
+createDeleteQuery(
+  tableName: string,
+)
+```
+- createInsertQuery
+```typescript
+createInsertQuery(
+  tableName: string,
+)
+```
+- createInsertQuery
+```typescript
+createInsertQuery(
+  tableName: string,
 ) {}
 ```
 - select
