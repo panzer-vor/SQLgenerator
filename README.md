@@ -51,7 +51,7 @@ createInsertQuery(
 select(
   fields: {
     [filedsName: string] : string  
-  }
+  } | string
 )
 ```
 - where

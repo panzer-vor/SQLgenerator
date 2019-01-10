@@ -1,7 +1,7 @@
 import { createSelectQueryBuilder } from '../builder/selectBuilder'
 import { createUpdateQueryBuilder } from '../builder/updateBuilder'
 import { createInsertQueryBuilder } from '../builder/insertBuilder' 
-
+import { createDeleteQueryBuilder } from '../builder/deleteBuilder'
 export declare function createSelectQuery(
   tableName: string,
   tableRename?: string,
@@ -14,3 +14,8 @@ export declare function createUpdateQuery(
 export declare function createInsertQuery(
   tableName: string,
 ): createInsertQueryBuilder {}
+
+export declare function createDeleteQuery(
+  tableName: string,
+  tableRename?: string,
+): createDeleteQueryBuilder {}

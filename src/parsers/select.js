@@ -14,5 +14,8 @@ export function select(
     const fieldsStrValues = `(${Object.keys(fields).map(v => fields[v]).join()})`
     this._str += fieldsStrKeys + ' VALUES ' + fieldsStrValues
   }
+  if (this._str.indexOf('DELETE') > -1) {
+    this._str = this._str.replace('*', fields.join())
+  }
   return this  
 }
