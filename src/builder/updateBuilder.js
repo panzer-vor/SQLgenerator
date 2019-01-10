@@ -11,6 +11,10 @@ export class createUpdateQueryBuilder {
     this.select = select
     this.createUpdateQuery = createUpdateQuery.bind(this)
   }
+  input(str) {
+    this._str += str
+    return this
+  }
   getQuery() {
     const str = this._str
     this._str = 'UPDATE '

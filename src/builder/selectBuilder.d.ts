@@ -19,5 +19,6 @@ export declare class createSelectQueryBuilder{
   public orWhere: orWhere
   public leftJoin: leftJoin
   public createSelectQuery: createSelectQuery
+  public input(str: string): createSelectQueryBuilder
   public getQuery(): string
 }

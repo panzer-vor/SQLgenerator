@@ -1,5 +1,5 @@
 export function leftJoin(
-  [joinTableName, joinTableRename], condition, ...conditions
+  [joinTableName, joinTableRename], condition
 ) {
   this._str += `LEFT JOIN ${joinTableName} `
   if (joinTableRename) {

@@ -8,7 +8,6 @@ import {
 import { leftJoin } from '../parsers/leftJoin'
 import { innerJoin } from '../parsers/innerJoin'
 import { select } from '../parsers/select'
-
 export class createDeleteQueryBuilder {
   constructor() {
     this._str = 'DELETE * '
@@ -20,6 +19,10 @@ export class createDeleteQueryBuilder {
     this.leftJoin = leftJoin
     this.innerJoin = innerJoin
     this.createDeleteQuery = createDeleteQuery.bind(this)
+  }
+  input(str) {
+    this._str += str
+    return this
   }
   getQuery() {
     let str = this._str

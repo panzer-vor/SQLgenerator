@@ -1,5 +1,5 @@
 export function innerJoin(
-  [joinTableName, joinTableRename], condition, ...conditions
+  [joinTableName, joinTableRename], condition
 ) {
   this._str += `INNER JOIN ${joinTableName} `
   if (joinTableRename) {

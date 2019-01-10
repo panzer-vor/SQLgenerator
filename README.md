@@ -49,9 +49,7 @@ createInsertQuery(
 - select
 ```typescript
 select(
-  fields: {
-    [filedsName: string] : string  
-  } | string
+  fields: string[]
 )
 ```
 - where
@@ -115,6 +113,10 @@ innerJoin(
 groupBy(
   field: string,
 )
+```
+- input
+```typescript
+input(str: string): string
 ```
 - getQuery
 ```typescript

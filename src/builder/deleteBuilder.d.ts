@@ -18,5 +18,6 @@ export declare class createDeleteQueryBuilder{
   public leftJoin: leftJoin
   public innerJoin: innerJoin
   public createDeleteQuery: createDeleteQuery
+  public input(str: string): createDeleteQueryBuilder
   public getQuery(): string
 }

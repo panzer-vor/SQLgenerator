@@ -6,6 +6,10 @@ export class createInsertQueryBuilder {
     this.select = select
     this.createInsertQuery = createInsertQuery.bind(this)
   }
+  input(str) {
+    this._str += str
+    return this
+  }
   getQuery() {
     const str = this._str
     this._str = 'INSERT '

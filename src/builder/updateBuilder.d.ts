@@ -15,5 +15,6 @@ export declare class createUpdateQueryBuilder{
   public andWhere: andWhere
   public orWhere: orWhere
   public createUpdateQuery: createUpdateQuery
+  public input(str: string): createUpdateQueryBuilder
   public getQuery(): string
 }
