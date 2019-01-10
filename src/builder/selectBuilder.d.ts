@@ -12,12 +12,12 @@ import { select } from '../parsers/select'
 
 export declare class createSelectQueryBuilder{
   static _str: string
-  select: select
-  where: where
-  inWhere: inWhere
-  andWhere: andWhere
-  orWhere: orWhere
-  leftJoin: leftJoin
-  createSelectQuery: createSelectQuery
-  getQuery(): string
+  public select: select
+  public where: where
+  public inWhere: inWhere
+  public andWhere: andWhere
+  public orWhere: orWhere
+  public leftJoin: leftJoin
+  public createSelectQuery: createSelectQuery
+  public getQuery(): string
 }

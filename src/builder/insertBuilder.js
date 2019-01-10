@@ -2,12 +2,12 @@ import { createInsertQuery } from '../parsers/createQuery'
 
 export class createInsertQueryBuilder {
   constructor() {
-    this._str = 'UPDATE * '
+    this._str = 'INSERT '
     this.createInsertQuery = createInsertQuery.bind(this)
   }
   getQuery() {
     const str = this._str
-    this._str = 'UPDATE * '
+    this._str = 'INSERT '
     return str
   }
 }

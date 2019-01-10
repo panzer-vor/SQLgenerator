@@ -1,6 +1,6 @@
 import { sqlG } from '../src/main'
 
-test('createQuery expected', () => {
+test('createSelectQuery expected', () => {
   expect(
     sqlG
       .createSelectQuery(

@@ -9,19 +9,15 @@ export function createSelectQuery(
 
 export function createUpdateQuery(
   tableName,
-  tableRename,
 ) {
-  this._str += `FROM ${tableName} `
-  if (tableRename) this._str += `AS ${tableRename} `
+  this._str += `${tableName} SET `
   return this
 }
 
 export function createInsertQuery(
   tableName,
-  tableRename,
 ) {
-  this._str += `FROM ${tableName} `
-  if (tableRename) this._str += `AS ${tableRename} `
+  this._str += `${tableName} `
   return this
 }
 

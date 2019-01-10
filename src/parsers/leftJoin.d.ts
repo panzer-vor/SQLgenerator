@@ -1,4 +1,3 @@
-import { leftJoin } from "./leftJoin"
 import { createSelectQueryBuilder } from "../builder/selectBuilder"
 
 export declare function leftJoin(
