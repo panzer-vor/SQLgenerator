@@ -2,16 +2,19 @@ export function select(
   fields
 ) {
   if (this._str.indexOf('SELECT') > -1) {
-    const fieldsStr = Object.keys(fields).map(v => `${v} AS ${fields[v]}`).join()
+    const fieldsStr = fields.map(v => v[1] ? `${v[0]} AS ${v[1]}` : `${v[0]}`).join()
     this._str = this._str.replace('*', fieldsStr)
   }
   if (this._str.indexOf('UPDATE') > -1) {
-    const fieldsStr = Object.keys(fields).map(v => `${v} = ${fields[v]}`).join()
+    const fieldsStr = fields.map(v => {
+      if (!v[1]) throw new Error('UPDATE的SELECT必须存在VALUE')
+      return `${v[0]} = ${v[1]}`
+    }).join()
     this._str += fieldsStr + ' '
   }
   if (this._str.indexOf('INSERT') > -1) {
-    const fieldsStrKeys = `(${Object.keys(fields).join()})`
-    const fieldsStrValues = `(${Object.keys(fields).map(v => fields[v]).join()})`
+    const fieldsStrKeys = `(${fields.map(v => v[0]).join()})`
+    const fieldsStrValues = `(${fields.map(v => v[1]).join()})`
     this._str += fieldsStrKeys + ' VALUES ' + fieldsStrValues
   }
   if (this._str.indexOf('DELETE') > -1) {

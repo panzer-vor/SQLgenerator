@@ -49,7 +49,7 @@ createInsertQuery(
 - select
 ```typescript
 select(
-  fields: string[]
+  fields: [string[]]
 )
 ```
 - where
