@@ -102,6 +102,14 @@ leftJoin(
   ...conditions?: string,
 )
 ```
+- innerJoin
+```typescript
+innerJoin(
+  joinTable: string[],
+  condition: string, 
+  ...conditions?: string,
+)
+```
 - groupBy
 ```typescript
 groupBy(

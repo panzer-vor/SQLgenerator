@@ -7,7 +7,7 @@ import {
   orWhere
 } from '../parsers/where'
 import { leftJoin } from '../parsers/leftJoin'
-
+import { innerJoin } from '../parsers/innerJoin'
 export declare class createDeleteQueryBuilder{
   static _str: string
   public select: select
@@ -16,6 +16,7 @@ export declare class createDeleteQueryBuilder{
   public andWhere: andWhere
   public orWhere: orWhere
   public leftJoin: leftJoin
+  public innerJoin: innerJoin
   public createDeleteQuery: createDeleteQuery
   public getQuery(): string
 }

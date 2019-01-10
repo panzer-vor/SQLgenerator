@@ -9,6 +9,7 @@ import {
 import { leftJoin } from '../parsers/leftJoin'
 import { groupBy } from '../parsers/groupBy'
 import { orderBy } from '../parsers/orderBy'
+import { innerJoin } from '../parsers/innerJoin'
 import { limit } from '../parsers/limit'
 
 export class createSelectQueryBuilder {
@@ -21,6 +22,7 @@ export class createSelectQueryBuilder {
     this.orWhere = orWhere
     this.groupBy = groupBy
     this.leftJoin = leftJoin
+    this.innerJoin = innerJoin
     this.orderBy = orderBy
     this.limit = limit
     this.createSelectQuery = createSelectQuery.bind(this)

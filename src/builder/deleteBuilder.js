@@ -6,6 +6,7 @@ import {
   orWhere
 } from '../parsers/where'
 import { leftJoin } from '../parsers/leftJoin'
+import { innerJoin } from '../parsers/innerJoin'
 import { select } from '../parsers/select'
 
 export class createDeleteQueryBuilder {
@@ -17,6 +18,7 @@ export class createDeleteQueryBuilder {
     this.andWhere = andWhere
     this.orWhere = orWhere
     this.leftJoin = leftJoin
+    this.innerJoin = innerJoin
     this.createDeleteQuery = createDeleteQuery.bind(this)
   }
   getQuery() {

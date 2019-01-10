@@ -164,6 +164,21 @@ test('leftJoin expected', () => {
   ).toBe('SELECT * FROM table_name AS t LEFT JOIN table_id AS i ON i.id = 1 ')
 })
 
+test('innerJoin expected', () => {
+  expect(
+    sqlG
+      .createSelectQuery(
+        'table_name',
+        't'
+      )
+      .innerJoin(
+        ['table_id', 'i'],
+        'i.id = 1'
+      )
+      .getQuery()
+  ).toBe('SELECT * FROM table_name AS t INNER JOIN table_id AS i ON i.id = 1 ')
+})
+
 test('groupBy expected', () => {
   expect(
     sqlG
