@@ -1,8 +1,9 @@
-const { sqlG } = require('./bundle');
+const { sqlG } = require('sql-g');
 
 console.log(
   sqlG
   .createSelectQuery('table_name')
+  .select('aaa')
   .getQuery()
 )
 // const sqlInstance = sqlG

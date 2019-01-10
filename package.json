@@ -1,19 +1,38 @@
 {
-  "name": "SQLgenerator",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "sql-g",
+  "version": "0.0.3",
   "repository": "https://github.com/panzer-vor/SQLgenerator.git",
-  "author": "panzer-vor <xyk0279@gmail.com>",
-  "license": "MIT",
+  "author": "panzer-vor",
+  "description": "node generator sql",
+  "keywords": [
+    "node",
+    "sql"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
   },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "package-lock.json",
+    "README.md"
+  ],
+  "main": "dist/index.js",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
-    "regenerator-runtime": "^0.13.1"
+    "regenerator-runtime": "^0.13.1",
+    "rollup-plugin-babel": "3",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "sql-g": "^0.0.3"
   }
 }
