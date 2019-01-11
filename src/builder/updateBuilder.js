@@ -16,10 +16,8 @@ export class createUpdateQueryBuilder {
     return this
   }
   getQuery() {
-    const str = this._str
-    this._str = 'UPDATE '
-    return str
+    return this._str
   }
 }
 
-export default new createUpdateQueryBuilder().createUpdateQuery
+export default createUpdateQueryBuilder

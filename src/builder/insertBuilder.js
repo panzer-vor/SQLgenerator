@@ -11,10 +11,8 @@ export class createInsertQueryBuilder {
     return this
   }
   getQuery() {
-    const str = this._str
-    this._str = 'INSERT '
-    return str
+    return this._str
   }
 }
 
-export default new createInsertQueryBuilder().createInsertQuery
+export default createInsertQueryBuilder

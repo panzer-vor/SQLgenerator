@@ -1,15 +1,27 @@
-import createSelectQuery from './builder/selectBuilder'
-import createUpdateQuery from './builder/updateBuilder'
-import createInsertQuery from './builder/insertBuilder'
-import createDeleteQuery from './builder/deleteBuilder'
+import createSelectQueryBuilder from './builder/selectBuilder'
+import createUpdateQueryBuilder from './builder/updateBuilder'
+import createInsertQueryBuilder from './builder/insertBuilder'
+import createDeleteQueryBuilder from './builder/deleteBuilder'
 export class SQLGenerator {
-  constructor() {
-    this._str = ''
-    this.createSelectQuery = createSelectQuery
-    this.createUpdateQuery = createUpdateQuery
-    this.createInsertQuery = createInsertQuery
-    this.createDeleteQuery = createDeleteQuery
+  createSelectQuery(...params) {
+    return new createSelectQueryBuilder().createSelectQuery(...params)
+  }
+  createUpdateQuery(...params) {
+    return new createUpdateQueryBuilder().createUpdateQuery(...params)
+  }
+  createInsertQuery(...params) {
+    return new createInsertQueryBuilder().createInsertQuery(...params)
+  }
+  createDeleteQuery(...params) {
+    return new createDeleteQueryBuilder().createDeleteQuery(...params)
   }
 }
-export default new SQLGenerator()
-export const sqlG = new SQLGenerator()
+SQLGenerator.getInstance = (() => {
+  let instance
+  return () => {
+    if (!instance) instance = new SQLGenerator()
+    return instance
+  }
+})()
+export default SQLGenerator.getInstance()
+export const sqlG = SQLGenerator.getInstance()

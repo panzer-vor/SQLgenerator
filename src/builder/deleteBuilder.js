@@ -25,11 +25,9 @@ export class createDeleteQueryBuilder {
     return this
   }
   getQuery() {
-    let str = this._str
-    if (this._str.indexOf('*' > -1)) str = str.replace('*', '')
-    this._str = 'DELETE * '
-    return str
+    if (this._str.indexOf('*' > -1)) this._str = this._str.replace('*', '')
+    return this._str
   }
 }
 
-export default new createDeleteQueryBuilder().createDeleteQuery
+export default createDeleteQueryBuilder

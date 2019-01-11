@@ -32,15 +32,11 @@ export class createSelectQueryBuilder {
     return this
   }
   getQuery() {
-    const str = this._str
-    this._str = 'SELECT * '
-    return str
+    return this._str
   }
   getInnerCount() {
-    const str = `SELECT count(*) as total FROM (${this._str}) AS t`
-    this._str = 'SELECT * '
-    return str
+    return `SELECT count(*) as total FROM (${this._str}) AS t`
   }
 }
 
-export default new createSelectQueryBuilder().createSelectQuery
+export default createSelectQueryBuilder

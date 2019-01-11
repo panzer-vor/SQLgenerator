@@ -7,7 +7,7 @@ export function select(
   }
   if (this._str.indexOf('UPDATE') > -1) {
     const fieldsStr = fields.map(v => {
-      if (!v[1]) throw new Error('UPDATE的SELECT必须存在VALUE')
+      if (!v[1]) throw new Error('expect value')
       return `${v[0]} = ${v[1]}`
     }).join()
     this._str += fieldsStr + ' '
