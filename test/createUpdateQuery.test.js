@@ -8,9 +8,9 @@ test('createUpdateQuery expected', () => {
       )
       .select([
         ['id', 1],
-        ['name', '"张三"']
+        ['name', '张三']
       ])
       .getQuery()
-  ).toBe('UPDATE table_name SET id = 1,name = "张三" ')
+  ).toBe("UPDATE table_name SET id = 1,name = '张三' ")
 })
 
