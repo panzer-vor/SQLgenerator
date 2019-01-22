@@ -18,7 +18,7 @@ export function select(
   }
   if (ENV === 2) {
     const fieldsStr = fields.map(v => {
-      if (!v[1]) throw new Error('expect value')
+      if (typeof v[1] === 'undefined') throw new Error('expect value')
       return `${v[0]} = ${v[1]}`
     }).join()
     this._str += fieldsStr + ' '
