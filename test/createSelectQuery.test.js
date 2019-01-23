@@ -161,13 +161,14 @@ test('leftJoin expected', () => {
       .leftJoin(
         ['table_id', 'i'],
         [
-          ['i.id', 1],
+          ['i.id', 't.id'],
           ['i.id', 2],
         ],
-        'AND'
+        'AND',
+        false
       )
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t LEFT JOIN table_id AS i ON (i.id = 1 AND i.id = 2 )  ')
+  ).toBe('SELECT * FROM table_name AS t LEFT JOIN table_id AS i ON (i.id = t.id AND i.id = 2 )  ')
 })
 
 test('innerJoin expected', () => {
@@ -179,10 +180,10 @@ test('innerJoin expected', () => {
       )
       .innerJoin(
         ['table_id', 'i'],
-        'i.id = 1'
+        ['i.id', 't.id'],
       )
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t INNER JOIN table_id AS i ON i.id = 1 ')
+  ).toBe('SELECT * FROM table_name AS t INNER JOIN table_id AS i ON i.id = t.id  ')
 })
 
 test('groupBy expected', () => {

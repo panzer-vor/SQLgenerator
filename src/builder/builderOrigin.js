@@ -32,11 +32,17 @@ export default class buildOrigin {
       }
     }
   }
-  __handleWhereString (where, type = '') {
+  __handleWhereString (where, type = '', autoFill = true) {
     let _str = ''
     function whereArray ([key, value, linkWay]) {
       if (typeof value === 'undefined') throw new Error('where params[0] need two length array')
-      const newValue = linkWay === 'LIKE' ? `'%${value}%'` : value
+      let newValue
+      if (autoFill) {
+        newValue = linkWay === 'LIKE' ? `'%${value}%'` 
+          : typeof value === 'string' ? `'${value}'` : value
+      } else {
+        newValue = value
+      }
       return `${key} ${linkWay || '='} ${newValue} `
     }
     if (Array.isArray(where[0])) {
