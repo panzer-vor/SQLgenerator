@@ -1,8 +1,11 @@
 import { createSelectQueryBuilder } from '../builder/selectBuilder'
 import { createUpdateQueryBuilder } from '../builder/updateBuilder'
 import { createDeleteQueryBuilder } from '../builder/deleteBuilder'
+interface IWhere {
+  [key: string, value: string | number, link?: string]: string | number
+}
 export declare function where(
-  where: string
+  where: IWhere
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}
 
 export declare function inWhere(
@@ -11,11 +14,11 @@ export declare function inWhere(
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}
 
 export declare function orWhere(
-  where: string | string[],
+  where: IWhere | IWhere[],
   prefix?: 'AND' | 'OR' 
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}
 
 export declare function andWhere(
-  where: string | string[],
+  where: IWhere | IWhere[],
   prefix?: 'AND' | 'OR'
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}

@@ -1,6 +1,6 @@
 {
   "name": "sql-g",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "repository": "https://github.com/panzer-vor/SQLgenerator.git",
   "author": "panzer-vor",
   "description": "node generator sql",
@@ -8,6 +8,7 @@
     "node",
     "sql"
   ],
+  "typings": "./index.d.ts",
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
@@ -19,7 +20,7 @@
     "package-lock.json",
     "README.md"
   ],
-  "main": "dist/index.js",
+  "main": "dist/sqlG.js",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",

@@ -1,24 +1,8 @@
-function handleWhereString (where, type = '') {
-  let _str = ''
-  function whereArray (array) {
-    if (typeof array[1] === 'undefined') throw new Error('where params[0] need two length array')
-    const key = array[0], juge = array[2] || '='
-    const value = juge === 'LIKE' ? `'%${array[1]}%'` : array[1]
-    return `${key} ${juge} ${value} `
-  }
-  if (Array.isArray(where[0])) {
-    _str += `(${where.map(v => `${whereArray(v)}`).join(`${type} `)})` + ' '
-  } else {
-    _str += whereArray(where)
-  }
-  return _str
-}
-
 export function where(
   where, 
 ) {
   this._str += `WHERE `
-  this._str += handleWhereString(where)
+  this._str += this.__handleWhereString(where)
   return this
 }
 
@@ -36,7 +20,7 @@ export function andWhere(
   prefix = 'AND',
 ) {
   this._str += `${prefix} `
-  this._str += handleWhereString(where, 'AND')
+  this._str += this.__handleWhereString(where, 'AND')
   return this
 }
 
@@ -45,6 +29,6 @@ export function orWhere(
   prefix = 'OR',
 ) {
   this._str += `${prefix} `
-  this._str += handleWhereString(where, 'OR')
+  this._str += this.__handleWhereString(where, 'OR')
   return this
 }

@@ -1,10 +1,13 @@
 export function leftJoin(
-  [joinTableName, joinTableRename], condition
+  [joinTableName, joinTableRename], 
+  condition,
+  type,
 ) {
   this._str += `LEFT JOIN ${joinTableName} `
   if (joinTableRename) {
     this._str += `AS ${joinTableRename} `
   }
-  this._str += `ON ${condition} `
+  if (!Array.isArray(condition[0]) && typeof type !== 'undefined') throw new Error('you don\'t need param type')
+  this._str += `ON ${this.__handleWhereString(condition, type)} `
   return this
 }
