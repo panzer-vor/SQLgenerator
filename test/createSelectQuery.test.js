@@ -45,7 +45,9 @@ test('where expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
+      .where(
+        ['t.id', 1]
+      )
       .getQuery()
   ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 ')
 })
@@ -69,8 +71,8 @@ test('andWhere expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
-      .andWhere('t.id = 2')
+      .where(['t.id', 1])
+      .andWhere(['t.id', 2])
       .getQuery()
   ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND t.id = 2 ')
   expect(
@@ -79,14 +81,14 @@ test('andWhere expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
+      .where(['t.id', 1])
       .andWhere([
-        't.id = 2',
-        't.id = 3',
-        't.id = 4',        
+        ['t.id', 2],
+        ['t.id', 3],
+        ['t.id', 4],
       ])
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND t.id = 2 AND t.id = 3 AND t.id = 4 ')
+  ).toBe(`SELECT * FROM table_name AS t WHERE t.id = 1 AND (t.id = 2 AND t.id = 3 AND t.id = 4 ) `)
 })
 
 test('orWhere expected', () => {
@@ -96,24 +98,24 @@ test('orWhere expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
-      .orWhere('t.id = 2')
+      .where(['t.id', 'A', 'LIKE'])
+      .orWhere(['t.id', 2])
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 OR t.id = 2 ')
+  ).toBe("SELECT * FROM table_name AS t WHERE t.id LIKE '%A%' OR t.id = 2 ")
   expect(
     sqlG
       .createSelectQuery(
         'table_name',
         't'
       )
-      .where('t.id = 1')
+      .where(['t.id', 1, 'LIKE'])
       .orWhere([
-        't.id = 2',
-        't.id = 3',
-        't.id = 4',        
+        ['t.id', 2],
+        ['t.id', 3],
+        ['t.id', 4],    
       ], 'AND')
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND (t.id = 2 OR t.id = 3 OR t.id = 4) ')
+  ).toBe('SELECT * FROM table_name AS t WHERE t.id LIKE \'%1%\' AND (t.id = 2 OR t.id = 3 OR t.id = 4 ) ')
 })
 
 test('orWhere connect andWhere expected', () => {
@@ -123,9 +125,9 @@ test('orWhere connect andWhere expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
-      .andWhere('t.id = 3')
-      .orWhere('t.id = 2')
+      .where(['t.id', 1])
+      .andWhere(['t.id', 3])
+      .orWhere(['t.id', 2])
       .getQuery()
   ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND t.id = 3 OR t.id = 2 ')
   expect(
@@ -134,19 +136,19 @@ test('orWhere connect andWhere expected', () => {
         'table_name',
         't'
       )
-      .where('t.id = 1')
+      .where(['t.id', 1])
       .andWhere([
-        't.id = 2',
-        't.id = 3',
-        't.id = 4',
+        ['t.id', 2],
+        ['t.id', 3],
+        ['t.id', 4],
       ])
       .orWhere([
-        't.id = 2',
-        't.id = 3',
-        't.id = 4',        
+        ['t.id', 2],
+        ['t.id', 3],
+        ['t.id', 4],        
       ])
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND t.id = 2 AND t.id = 3 AND t.id = 4 OR (t.id = 2 OR t.id = 3 OR t.id = 4) ')
+  ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND (t.id = 2 AND t.id = 3 AND t.id = 4 ) OR (t.id = 2 OR t.id = 3 OR t.id = 4 ) ')
 })
 
 test('leftJoin expected', () => {

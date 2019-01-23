@@ -17,7 +17,7 @@ test('createDeleteQuery expected', () => {
       .createDeleteQuery(
         'table_name',
       )
-      .where('id = 1')
+      .where(['id', 1])
       .getQuery()
   ).toBe('DELETE  FROM table_name WHERE id = 1 ')
 })
