@@ -15,10 +15,10 @@ test('createSelectQuery expected', () => {
         'table_name',
         't'
       )
-      .select([
+      .select(
         ['t.id', 'id'],
         ['t.name', 'name']
-      ])
+      )
       .getQuery()
   ).toBe('SELECT t.id AS id,t.name AS name FROM table_name AS t ')
 })
@@ -30,10 +30,10 @@ test('select expected', () => {
         'table_name',
         't'
       )
-      .select([
+      .select(
         ['t.id', 'id'],
         ['t.name', 'name']
-      ])
+      )
       .getQuery()
   ).toBe('SELECT t.id AS id,t.name AS name FROM table_name AS t ')
 })

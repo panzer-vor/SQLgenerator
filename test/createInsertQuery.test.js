@@ -6,10 +6,10 @@ test('createInsertQuery expected', () => {
       .createInsertQuery(
         'table_name',
       )
-      .select([
+      .select(
         ['id', 1],
         ['name', '张三']
-      ])
+      )
       .getQuery()
   ).toBe("INSERT table_name (id,name) VALUES (1,'张三')")
 })

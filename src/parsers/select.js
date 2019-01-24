@@ -1,5 +1,5 @@
 export function select(
-  field
+  ...field
 ) {
   const ENV = this.__getCreateEnvironment()
   const fields = field.map(v => {

@@ -15,7 +15,7 @@ export function innerJoin(
     xType = autoFill
   }
   if (useWhereParser) {
-    if (!Array.isArray(condition[0]) && typeof type !== 'undefined') throw new Error('you don\'t need param type')
+    if (!Array.isArray(condition[0]) && typeof type !== 'undefined') throw new Error('you don\'t need param \'type\'')
     this._str += `ON ${this.__handleWhereString(condition, xType, xAutoFill)} `
   } else {
     this._str += `ON ${condition} `
