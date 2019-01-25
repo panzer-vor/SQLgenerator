@@ -32,6 +32,30 @@ export default class buildOrigin {
       }
     }
   }
+  __handleWhereParams (params, type = '') {
+    let whereField = []
+    let autoFill = true
+    let prefix = type + ' '
+    for (const v of params) {
+      if (typeof v === 'string' && (v.indexOf('OR') > -1 || v.indexOf('AND') > -1)) {
+        prefix = v + ' '
+      }
+      if (typeof v === 'boolean') {
+        autoFill = v
+      }
+      if (Array.isArray(v)) {
+        whereField.push(v)
+      }
+    }
+    if (whereField.length === 1) {
+      whereField = whereField[0]
+    }
+    return {
+      prefix,
+      whereField,
+      autoFill,
+    }
+  }
   __handleWhereString (where, type = '', autoFill = true) {
     let _str = ''
     function whereArray ([key, value, linkWay]) {

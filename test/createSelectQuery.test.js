@@ -82,11 +82,11 @@ test('andWhere expected', () => {
         't'
       )
       .where(['t.id', 1])
-      .andWhere([
+      .andWhere(
         ['t.id', 2],
         ['t.id', 3],
         ['t.id', 4],
-      ])
+      )
       .getQuery()
   ).toBe(`SELECT * FROM table_name AS t WHERE t.id = 1 AND (t.id = 2 AND t.id = 3 AND t.id = 4 ) `)
 })
@@ -109,11 +109,12 @@ test('orWhere expected', () => {
         't'
       )
       .where(['t.id', 1, 'LIKE'])
-      .orWhere([
+      .orWhere(
         ['t.id', 2],
         ['t.id', 3],
         ['t.id', 4],    
-      ], 'AND')
+        'AND'
+      )
       .getQuery()
   ).toBe('SELECT * FROM table_name AS t WHERE t.id LIKE \'%1%\' AND (t.id = 2 OR t.id = 3 OR t.id = 4 ) ')
 })
@@ -137,16 +138,16 @@ test('orWhere connect andWhere expected', () => {
         't'
       )
       .where(['t.id', 1])
-      .andWhere([
+      .andWhere(
         ['t.id', 2],
         ['t.id', 3],
         ['t.id', 4],
-      ])
-      .orWhere([
+      )
+      .orWhere(
         ['t.id', 2],
         ['t.id', 3],
         ['t.id', 4],        
-      ])
+      )
       .getQuery()
   ).toBe('SELECT * FROM table_name AS t WHERE t.id = 1 AND (t.id = 2 AND t.id = 3 AND t.id = 4 ) OR (t.id = 2 OR t.id = 3 OR t.id = 4 ) ')
 })
@@ -160,15 +161,13 @@ test('leftJoin expected', () => {
       )
       .leftJoin(
         ['table_id', 'i'],
-        [
-          ['i.id', 't.id'],
-          ['i.id', 2],
-        ],
+        ['i.id', 't.id'],
+        ['i.id', 2],
         'AND',
         false
       )
       .getQuery()
-  ).toBe('SELECT * FROM table_name AS t LEFT JOIN table_id AS i ON (i.id = t.id AND i.id = 2 )  ')
+  ).toBe('SELECT * FROM table_name AS t LEFT JOIN table_id AS i ON (i.id = t.id AND  i.id = 2 )  ')
 })
 
 test('innerJoin expected', () => {

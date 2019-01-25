@@ -1,24 +1,21 @@
 export function leftJoin(
   [joinTableName, joinTableRename], 
-  condition,
-  type,
-  autoFill = false,
+  ...condition
 ) {
   this._str += `LEFT JOIN ${joinTableName} `
   if (joinTableRename) {
     this._str += `AS ${joinTableRename} `
   }
-  const useWhereParser = typeof condition === 'string' ? false : true
-  let xAutoFill = autoFill, xType = type
-  if (typeof type === 'boolean') {
-    xAutoFill = type
-    xType = autoFill
-  }
+  const useWhereParser = typeof condition[0] === 'string' ? false : true
   if (useWhereParser) {
-    if (!Array.isArray(condition[0]) && typeof type !== 'undefined') throw new Error('you don\'t need param type')
-    this._str += `ON ${this.__handleWhereString(condition, xType, xAutoFill)} `
+    const {
+      autoFill,
+      prefix,
+      whereField
+    } = this.__handleWhereParams(condition)
+    this._str += `ON ${this.__handleWhereString(whereField, prefix, autoFill)} `
   } else {
-    this._str += `ON ${condition} `
+    this._str += `ON ${condition[0]} `
   }
   
   return this

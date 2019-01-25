@@ -14,11 +14,9 @@ export declare function inWhere(
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}
 
 export declare function orWhere(
-  where: IWhere | IWhere[],
-  prefix?: 'AND' | 'OR' 
+  ...where: IWhere[],
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}
 
 export declare function andWhere(
-  where: IWhere | IWhere[],
-  prefix?: 'AND' | 'OR'
+ ... where: IWhere[],
 ): createSelectQueryBuilder | createUpdateQueryBuilder | createDeleteQueryBuilder {}

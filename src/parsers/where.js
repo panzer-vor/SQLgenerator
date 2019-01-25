@@ -16,19 +16,25 @@ export function inWhere(
 }
 
 export function andWhere(
-  where,
-  prefix = 'AND',
+  ...where
 ) {
-  this._str += `${prefix} `
-  this._str += this.__handleWhereString(where, 'AND')
+  const {
+    prefix,
+    whereField,
+    autoFill
+  } = this.__handleWhereParams(where, 'AND')
+  this._str += prefix + this.__handleWhereString(whereField, 'AND', autoFill)
   return this
 }
 
 export function orWhere(
-  where,
-  prefix = 'OR',
+  ...where
 ) {
-  this._str += `${prefix} `
-  this._str += this.__handleWhereString(where, 'OR')
+  const {
+    prefix,
+    whereField,
+    autoFill
+  } = this.__handleWhereParams(where, 'OR')
+  this._str += prefix + this.__handleWhereString(whereField, 'OR', autoFill)
   return this
 }

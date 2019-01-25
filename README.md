@@ -68,14 +68,14 @@ inWhere(
 - orWhere
 ```typescript
 orWhere(
-  where: [key: string, value: string | number, link?: string] | [key: string, value: string | number, link?: string][]
+  ...where: [key: string, value: string | number, link?: string] 
   prefix?: 'AND' | 'OR' 
 )
 ```
 - andWhere
 ```typescript
 andWhere(
-  where: [key: string, value: string | number, link?: string] | [key: string, value: string | number, link?: string][]
+  ...where: [key: string, value: string | number, link?: string] 
   prefix?: 'AND' | 'OR' 
 )
 ```
@@ -96,8 +96,8 @@ limit(
 ```typescript
 leftJoin(
   joinTable: string[],
-  condition: string, 
-  type?: string | boolean,
+  ...condition: string, 
+  type?: string,
   autoFill?: boolean
 )
 ```
@@ -105,8 +105,8 @@ leftJoin(
 ```typescript
 innerJoin(
   joinTable: string[],
-  condition: string, 
-  type?: string | boolean,
+  ...condition: string, 
+  type?: string,
   autoFill?: boolean
 )
 ```
