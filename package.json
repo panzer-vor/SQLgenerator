@@ -1,6 +1,6 @@
 {
   "name": "sql-g",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "repository": "https://github.com/panzer-vor/SQLgenerator.git",
   "author": "panzer-vor",
   "description": "node generator sql",
